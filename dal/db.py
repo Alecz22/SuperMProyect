@@ -73,6 +73,7 @@ class Db:
                 count = int(cursor.fetchone()[0])
                 if count == 0:
                     cursor.execute(sql)
+                    cnn.commit()
 
     @staticmethod
     def formato_fecha_db(fecha):

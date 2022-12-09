@@ -201,7 +201,7 @@ class Registro(tk.Toplevel):
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
-                    user.agregar(nombre, apellido, fecha_nac, dni, email, usuario, contrasenia)#, rol_id)
+                    user.agregar(nombre, apellido, fecha_nac, dni, email, usuario, contrasenia)#, rol_id) SIN ROL POR AHORA AGREGAR MAS TARDE
                     tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
                     try:
                         self.master.refrescar()
@@ -212,7 +212,7 @@ class Registro(tk.Toplevel):
                     tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
             else:
                 print("Actualizacion de usuario")
-                user.actualizar(self.user_id, nombre, apellido, fecha_nac, dni, email, contrasenia) #,rol_id)  # TODO ver el tema de la contraseña
+                user.actualizar(self.user_id, nombre, apellido, fecha_nac, dni, email, contrasenia) #,rol_id)  # SIN ROL POR AHORA TODO ver el tema de la contraseña
                 tkMsgBox.showinfo(self.master.title(), "Registro modificado!!!!!!")                
                 self.master.refrescar()
                 self.destroy()  
