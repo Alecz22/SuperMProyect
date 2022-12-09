@@ -2,7 +2,7 @@ import sqlite3
 from datetime import date
 import hashlib
 
-database = "DBSupermarket.db"
+database = "Sup.db"
 
 class Db:
     @staticmethod
