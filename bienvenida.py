@@ -1,11 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkFont
+from  dal.db import Db
+from iniciosesion import Inicio
 
 class App:
-    def __init__(self, root):
-        #setting title
-        root.title("Supermarket")
-        #setting window size
+    def __init__(self, root, title):
+        self.root=root
+        root.title(title)
         width=446
         height=130
         screenwidth = root.winfo_screenwidth()
@@ -22,7 +23,7 @@ class App:
         GButton_325["justify"] = "center"
         GButton_325["text"] = "Entrar al Super"
         GButton_325.place(x=100,y=60,width=250,height=35)
-        GButton_325["command"] = self.GButton_325_command
+        GButton_325["command"] = self.abrir_iniciosesion
 
         GMessage_423=tk.Message(root)
         ft = tkFont.Font(family='Times',size=10)
@@ -32,10 +33,14 @@ class App:
         GMessage_423["text"] = "¡Bienvenido a Supermarket!"
         GMessage_423.place(x=70,y=5,width=303,height=50)
 
-    def GButton_325_command(self):
-        print("command")
+    def abrir_iniciosesion(self):
+        Inicio(self.root)
 
 if __name__ == "__main__":
+    Db.crear_tablas()
+    Db.poblar_tablas()
+    project= "supermarket"
     root = tk.Tk()
-    app = App(root)
+    root.iconbitmap(default=f"{project}.ico")
+    app = App(root, project.capitalize())
     root.mainloop()
