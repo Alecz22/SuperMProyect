@@ -21,7 +21,7 @@ class App:
         GButton_325["font"] = ft
         GButton_325["fg"] = "#000000"
         GButton_325["justify"] = "center"
-        GButton_325["text"] = "Entrar al Super"
+        GButton_325["text"] = "Iniciar Sesion"
         GButton_325.place(x=100,y=60,width=250,height=35)
         GButton_325["command"] = self.abrir_iniciosesion
 

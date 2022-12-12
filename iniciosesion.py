@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
+from Menu_administracion.menu_administrador import MenuAdm
 from registro import Registro
 from seleccion import Menuseleccion
 import bll.usuarios as user
@@ -61,19 +62,19 @@ class Inicio(tk.Toplevel):
         GButton_305["font"] = ft
         GButton_305["fg"] = "#000000"
         GButton_305["justify"] = "center"
-        GButton_305["text"] = "Aceptar"
-        GButton_305.place(x=300,y=210,width=70,height=25)
+        GButton_305["text"] = "Entrar"
+        GButton_305.place(x=300,y=210,width=150,height=25)
         GButton_305["command"] = self.iniciar_sesion
 
-        GButton_389=tk.Button(self)
-        GButton_389["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        GButton_389["font"] = ft
-        GButton_389["fg"] = "#000000"
-        GButton_389["justify"] = "center"
-        GButton_389["text"] = "Cancelar"
-        GButton_389.place(x=390,y=210,width=70,height=25)
-        GButton_389["command"] = self.cancelar
+        # GButton_389=tk.Button(self)
+        # GButton_389["bg"] = "#f0f0f0"
+        # ft = tkFont.Font(family='Times',size=10)
+        # GButton_389["font"] = ft
+        # GButton_389["fg"] = "#000000"
+        # GButton_389["justify"] = "center"
+        # GButton_389["text"] = "Cancelar"
+        # GButton_389.place(x=390,y=210,width=70,height=25)
+        # GButton_389["command"] = self.cancelar
 
         GMessage_601=tk.Message(self)
         ft = tkFont.Font(family='Times',size=10)
@@ -81,7 +82,7 @@ class Inicio(tk.Toplevel):
         GMessage_601["fg"] = "#333333"
         GMessage_601["justify"] = "right"
         GMessage_601["text"] = "¿No posee una cuenta?"
-        GMessage_601.place(x=10,y=210,width=200,height=50)
+        GMessage_601.place(x=10,y=210,width=250,height=50)
 
         GButton_559=tk.Button(self)
         GButton_559["bg"] = "#f0f0f0"
@@ -90,7 +91,7 @@ class Inicio(tk.Toplevel):
         GButton_559["fg"] = "#000000"
         GButton_559["justify"] = "center"
         GButton_559["text"] = "Registrarse"
-        GButton_559.place(x=190,y=210,width=70,height=25)
+        GButton_559.place(x=200,y=210,width=70,height=35)
         GButton_559["command"] = self.Registro
 
     def iniciar_sesion(self):
@@ -102,9 +103,20 @@ class Inicio(tk.Toplevel):
             contrasenia = txtContrasenia.get()
 
             if usuario != "":
-                if user.validar(usuario, contrasenia):
-                    Menuseleccion(self.master)
-                    self.destroy()
+                # if user.validar(usuario, contrasenia):
+                #     Menuseleccion(self.master)
+                #     self.destroy()
+                if user.validar(usuario, contrasenia):                    
+                    usuario = user.obtener_nombre_usuario(usuario)
+                    if usuario is not None:
+                        if usuario[8] == "Administrador":
+                            MenuAdm(self.master)
+                            self.destroy()
+                        elif usuario[8] == "Cliente":
+                            # TODO chequear el rol del usuario para abrir el menu/ventana correspondiente
+                            Menuseleccion(self.master)
+                    else:
+                        tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")      
                 else:
                     tkMsgBox.showwarning(self.master.title(), "Usuario/Contraseña incorrecta")
             else:
@@ -114,8 +126,8 @@ class Inicio(tk.Toplevel):
 
 
 
-    def cancelar(self):
-        self.destroy()
+    #def cancelar(self):
+     #   self.destroy()
 
 
     def Registro(self):

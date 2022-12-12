@@ -1,11 +1,10 @@
 import tkinter as tk
 import tkinter.font as tkFont
 
-class App:
+class MenuProd:
     def __init__(self, root):
-        #setting title
+        
         root.title("Menu")
-        #setting window size
         width=400
         height=500
         screenwidth = root.winfo_screenwidth()
@@ -43,7 +42,3 @@ class App:
     def GButton_294_command(self):
         print("command")
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = App(root)
-    root.mainloop()

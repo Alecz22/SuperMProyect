@@ -1,7 +1,11 @@
 import tkinter as tk
+from tkinter import *
+import tkinter.ttk as ttk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
+import bll.roles as rol
+from datetime import date
 
 class Registro(tk.Toplevel):
     def __init__(self, master=None, isAdmin=False, user_id=None):
@@ -61,7 +65,7 @@ class Registro(tk.Toplevel):
         GButton_305["fg"] = "#000000"
         GButton_305["justify"] = "center"
         GButton_305["text"] = "Aceptar"
-        GButton_305.place(x=260,y=370,width=70,height=25)
+        GButton_305.place(x=260,y=380,width=70,height=25)
         GButton_305["command"] = self.aceptar
 
         GButton_389=tk.Button(self)
@@ -71,7 +75,7 @@ class Registro(tk.Toplevel):
         GButton_389["fg"] = "#000000"
         GButton_389["justify"] = "center"
         GButton_389["text"] = "Cancelar"
-        GButton_389.place(x=340,y=370,width=70,height=25)
+        GButton_389.place(x=340,y=380,width=70,height=25)
         GButton_389["command"] = self.cancelar
 
         GLineEdit_217=tk.Entry(self,name="txtCorreo")
@@ -130,7 +134,7 @@ class Registro(tk.Toplevel):
         GLabel_590["fg"] = "#333333"
         GLabel_590["justify"] = "center"
         GLabel_590["text"] = "Confirmar contraseña:"
-        GLabel_590.place(x=0,y=310,width=125,height=30)
+        GLabel_590.place(x=0,y=320,width=125,height=30)
 
         GLineEdit_164=tk.Entry(self,name="txtFechanacimiento")
         GLineEdit_164["borderwidth"] = "1px"
@@ -177,6 +181,39 @@ class Registro(tk.Toplevel):
         GLineEdit_230["text"] = ""
         GLineEdit_230.place(x=130,y=320,width=250,height=25)
 
+        GLabel_975 = Label(self)
+        ft = tkFont.Font(family='Times',size=10)
+        GLabel_975["font"] = ft
+        GLabel_975["fg"] = "#333333"
+        GLabel_975["anchor"] = "e"
+        GLabel_975["text"] = "Rol:"
+        GLabel_975.place(x=10,y=350,width=122,height=30)
+
+        roles = dict(rol.listar())
+        if isAdmin:
+             cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
+        else:
+                cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
+                cb_roles.set(roles[4])
+                cb_roles.place(x=130,y=350,width=150,height=25)
+
+        if user_id is not None:
+            usuario = user.obtener_id(user_id)
+            if usuario is None:
+               tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
+               self.destroy()
+            else:
+                GLineEdit_411.insert(0, usuario[1])
+                GLineEdit_540.insert(0, usuario[2])
+                fecha_nac = date(int(usuario[3][:4]), int(usuario[3][5:7]), int(usuario[3][8:]))
+                GLineEdit_164.insert(0, fecha_nac.strftime(r"%d/%m/%Y"))
+                GLineEdit_869.insert(0, usuario[4])
+                GLineEdit_217.insert(0, usuario[5])
+                GLineEdit_890.insert(0, usuario[6])
+                GLineEdit_890["state"] = "disabled"           
+                cb_roles.set(usuario[8])
+
+
 
     def get_value(self, name):
         return self.nametowidget(name).get()
@@ -195,7 +232,7 @@ class Registro(tk.Toplevel):
 
             contrasenia = self.get_value("txtContrasenia")            
             confirmacion = self.get_value("txtConfirmarcontra")
-            #rol_id = self.get_index("cbRoles")
+            rol_id = self.get_index("cbRoles")
 
             # TODO validar los datos antes de ingresar
             if self.user_id is None:
@@ -209,7 +246,7 @@ class Registro(tk.Toplevel):
                         print(ex)
                     self.destroy()                
                 else:
-                    tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
+                    tkMsgBox.showwarning(self.master.title(), "Usuario existente")
             else:
                 print("Actualizacion de usuario")
                 user.actualizar(self.user_id, nombre, apellido, fecha_nac, dni, email, contrasenia) #,rol_id)  # SIN ROL POR AHORA TODO ver el tema de la contraseña

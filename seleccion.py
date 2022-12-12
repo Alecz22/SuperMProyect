@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 import tkinter.font as tkFont
 
 class Menuseleccion(tk.Toplevel):
@@ -30,7 +31,7 @@ class Menuseleccion(tk.Toplevel):
         GButton_584["justify"] = "center"
         GButton_584["text"] = "AGREGAR"
         GButton_584.place(x=230,y=230,width=70,height=25)
-        GButton_584["command"] = self.GButton_584_command
+        GButton_584["command"] = self.agregar
 
         GButton_714=tk.Button(self)
         GButton_714["bg"] = "#f0f0f0"
@@ -40,7 +41,7 @@ class Menuseleccion(tk.Toplevel):
         GButton_714["justify"] = "center"
         GButton_714["text"] = "ELIMINAR"
         GButton_714.place(x=320,y=230,width=70,height=25)
-        GButton_714["command"] = self.GButton_714_command
+        GButton_714["command"] = self.sacar
 
         GLineEdit_837=tk.Entry(self)
         GLineEdit_837["borderwidth"] = "1px"
@@ -59,7 +60,7 @@ class Menuseleccion(tk.Toplevel):
         GButton_343["justify"] = "center"
         GButton_343["text"] = "BUSCAR"
         GButton_343.place(x=410,y=20,width=70,height=25)
-        GButton_343["command"] = self.GButton_343_command
+        GButton_343["command"] = self.busqueda
 
         GLineEdit_240=tk.Entry(self)
         GLineEdit_240["borderwidth"] = "1px"
@@ -111,20 +112,20 @@ class Menuseleccion(tk.Toplevel):
         GButton_574["justify"] = "center"
         GButton_574["text"] = "CONFIRMAR COMPRA"
         GButton_574.place(x=430,y=430,width=125,height=35)
-        GButton_574["command"] = self.GButton_574_command
+        GButton_574["command"] = self.confirmacion
 
-    def GButton_584_command(self):
+    def agregar(self):
         print("command")
 
 
-    def GButton_714_command(self):
+    def sacar(self):
         print("command")
 
 
-    def GButton_343_command(self):
+    def busqueda(self):
         print("command")
 
 
-    def GButton_574_command(self):
+    def confirmacion(self):
         print("command")
 
