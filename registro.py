@@ -38,6 +38,16 @@ class Registro(tk.Toplevel):
         GLabel_256["text"] = "Apellido: "
         GLabel_256.place(x=60,y=20,width=70,height=25)
 
+        GLineEdit_411=tk.Entry(self,name="txtApellido")
+        GLineEdit_411["bg"] = "#ffffff"
+        GLineEdit_411["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_411["font"] = ft
+        GLineEdit_411["fg"] = "#333333"
+        GLineEdit_411["justify"] = "center"
+        GLineEdit_411["text"] = ""
+        GLineEdit_411.place(x=130,y=20,width=250,height=25)
+
         GLineEdit_540=tk.Entry(self, name="txtNombre")
         GLineEdit_540["bg"] = "#ffffff"
         GLineEdit_540["borderwidth"] = "1px"
@@ -48,15 +58,60 @@ class Registro(tk.Toplevel):
         GLineEdit_540["text"] = ""
         GLineEdit_540.place(x=130,y=60,width=250,height=25)
 
-        GLineEdit_411=tk.Entry(self,name="txtApellido")
-        GLineEdit_411["bg"] = "#ffffff"
-        GLineEdit_411["borderwidth"] = "1px"
+        GLineEdit_217=tk.Entry(self,name="txtCorreo")
+        GLineEdit_217["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_411["font"] = ft
-        GLineEdit_411["fg"] = "#333333"
-        GLineEdit_411["justify"] = "center"
-        GLineEdit_411["text"] = ""
-        GLineEdit_411.place(x=130,y=20,width=250,height=25)
+        GLineEdit_217["font"] = ft
+        GLineEdit_217["fg"] = "#333333"
+        GLineEdit_217["justify"] = "center"
+        GLineEdit_217["text"] = ""
+        GLineEdit_217.place(x=130,y=110,width=250,height=25)
+
+        GLineEdit_164=tk.Entry(self,name="txtFechanacimiento")
+        GLineEdit_164["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_164["font"] = ft
+        GLineEdit_164["fg"] = "#333333"
+        GLineEdit_164["justify"] = "center"
+        GLineEdit_164["text"] = ""
+        GLineEdit_164.place(x=130,y=150,width=150,height=25)
+
+        GLineEdit_869=tk.Entry(self,name="txtDNI")
+        GLineEdit_869["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_869["font"] = ft
+        GLineEdit_869["fg"] = "#333333"
+        GLineEdit_869["justify"] = "center"
+        GLineEdit_869["text"] = ""
+        GLineEdit_869.place(x=130,y=190,width=150,height=25)
+
+        GLineEdit_890=tk.Entry(self,name="txtUsuario")
+        GLineEdit_890["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_890["font"] = ft
+        GLineEdit_890["fg"] = "#333333"
+        GLineEdit_890["justify"] = "center"
+        GLineEdit_890["text"] = ""
+        GLineEdit_890.place(x=130,y=230,width=250,height=25)
+
+        GLineEdit_635=tk.Entry(self,name="txtContrasenia",show="*")
+        GLineEdit_635["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_635["font"] = ft
+        GLineEdit_635["fg"] = "#333333"
+        GLineEdit_635["justify"] = "center"
+        GLineEdit_635["text"] = ""
+        GLineEdit_635.place(x=130,y=270,width=250,height=25)
+
+        GLineEdit_230=tk.Entry(self,name="txtConfirmarcontra",show="*")
+        GLineEdit_230["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_230["font"] = ft
+        GLineEdit_230["fg"] = "#333333"
+        GLineEdit_230["justify"] = "center"
+        GLineEdit_230["text"] = ""
+        GLineEdit_230.place(x=130,y=320,width=250,height=25)
+
 
         GButton_305=tk.Button(self)
         GButton_305["bg"] = "#f0f0f0"
@@ -78,14 +133,7 @@ class Registro(tk.Toplevel):
         GButton_389.place(x=340,y=380,width=70,height=25)
         GButton_389["command"] = self.cancelar
 
-        GLineEdit_217=tk.Entry(self,name="txtCorreo")
-        GLineEdit_217["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_217["font"] = ft
-        GLineEdit_217["fg"] = "#333333"
-        GLineEdit_217["justify"] = "center"
-        GLineEdit_217["text"] = ""
-        GLineEdit_217.place(x=130,y=110,width=250,height=25)
+       
 
         GLabel_318=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
@@ -136,51 +184,7 @@ class Registro(tk.Toplevel):
         GLabel_590["text"] = "Confirmar contraseña:"
         GLabel_590.place(x=0,y=320,width=125,height=30)
 
-        GLineEdit_164=tk.Entry(self,name="txtFechanacimiento")
-        GLineEdit_164["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_164["font"] = ft
-        GLineEdit_164["fg"] = "#333333"
-        GLineEdit_164["justify"] = "center"
-        GLineEdit_164["text"] = ""
-        GLineEdit_164.place(x=130,y=150,width=150,height=25)
-
-        GLineEdit_869=tk.Entry(self,name="txtDNI")
-        GLineEdit_869["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_869["font"] = ft
-        GLineEdit_869["fg"] = "#333333"
-        GLineEdit_869["justify"] = "center"
-        GLineEdit_869["text"] = ""
-        GLineEdit_869.place(x=130,y=190,width=150,height=25)
-
-        GLineEdit_890=tk.Entry(self,name="txtUsuario")
-        GLineEdit_890["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_890["font"] = ft
-        GLineEdit_890["fg"] = "#333333"
-        GLineEdit_890["justify"] = "center"
-        GLineEdit_890["text"] = ""
-        GLineEdit_890.place(x=130,y=230,width=250,height=25)
-
-        GLineEdit_635=tk.Entry(self,name="txtContrasenia",show="*")
-        GLineEdit_635["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_635["font"] = ft
-        GLineEdit_635["fg"] = "#333333"
-        GLineEdit_635["justify"] = "center"
-        GLineEdit_635["text"] = ""
-        GLineEdit_635.place(x=130,y=270,width=250,height=25)
-
-        GLineEdit_230=tk.Entry(self,name="txtConfirmarcontra",show="*")
-        GLineEdit_230["borderwidth"] = "1px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLineEdit_230["font"] = ft
-        GLineEdit_230["fg"] = "#333333"
-        GLineEdit_230["justify"] = "center"
-        GLineEdit_230["text"] = ""
-        GLineEdit_230.place(x=130,y=320,width=250,height=25)
-
+       
         GLabel_975 = Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_975["font"] = ft
@@ -188,6 +192,15 @@ class Registro(tk.Toplevel):
         GLabel_975["anchor"] = "e"
         GLabel_975["text"] = "Rol:"
         GLabel_975.place(x=10,y=350,width=122,height=30)
+
+        # GLineEdit_999=tk.Entry(self,name="txtRolId")
+        # GLineEdit_999["borderwidth"] = "1px"
+        # ft = tkFont.Font(family='Times',size=10)
+        # GLineEdit_999["font"] = ft
+        # GLineEdit_999["fg"] = "#333333"
+        # GLineEdit_999["justify"] = "center"
+        # GLineEdit_999["text"] = ""
+        # GLineEdit_999.place(x=130,y=350,width=250,height=25)
 
         roles = dict(rol.listar())
         if isAdmin:
@@ -221,6 +234,8 @@ class Registro(tk.Toplevel):
     def get_index(self, name):
         return self.nametowidget(name).current() + 1
 
+    def cancelar(self):
+        self.destroy()
     def aceptar(self):
         try:            
             apellido = self.get_value("txtApellido")
@@ -234,11 +249,14 @@ class Registro(tk.Toplevel):
             confirmacion = self.get_value("txtConfirmarcontra")
             rol_id = self.get_index("cbRoles")
 
-    
+            roles = dict(rol.listar())
+            
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
-                    user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id) 
+                    roles = dict(rol.listar())
+                    cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
+                    user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia,rol_id) 
                     tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
                     try:
                         self.master.refrescar()
@@ -256,8 +274,4 @@ class Registro(tk.Toplevel):
 
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
-
-
-    def cancelar(self):
-        self.destroy()
 
