@@ -1,14 +1,14 @@
 from dal.db import Db
 
-def agregar(apellido, nombre, fecha_nacimiento, dni, correo_electronico, usuario, contrasenia):#, rol_Id):    
+def agregar(apellido, nombre, fecha_nacimiento, dni, correo_electronico, usuario, contrasenia, rol_Id):    
     sql = "INSERT INTO Usuarios(Apellido, Nombre, FechaNacimiento, Dni, CorreoElectronico, Usuario, Contrasenia) VALUES(?, ?, ?, ?, ?, ?, ?);"
-    parametros = (apellido, nombre, Db.formato_fecha_db(fecha_nacimiento), dni, correo_electronico, usuario, Db.encriptar_contraseña(contrasenia))#, rol_Id)
+    parametros = (apellido, nombre, Db.formato_fecha_db(fecha_nacimiento), dni, correo_electronico, usuario, Db.encriptar_contraseña(contrasenia), rol_Id)
     Db.ejecutar(sql, parametros)
 
-def actualizar(id, apellido, nombre, fecha_nacimiento, dni, correo_electronico, contrasenia):#, rol_Id):    
-    sql = "UPDATE Usuarios SET Apellido = ?, Nombre = ?, FechaNacimiento = ?, Dni = ?, CorreoElectronico = ?, Contrasenia = ? WHERE UsuarioId = ? AND Activo = 1;"
-    parametros = (apellido, nombre, Db.formato_fecha_db(fecha_nacimiento), dni, correo_electronico, Db.encriptar_contraseña(contrasenia))#, rol_Id, id)
-    Db.ejecutar(sql, parametros)    
+def actualizar(id, apellido, nombre, fecha_nacimiento, dni, correo_electronico, contrasenia, rol_Id):    
+    sql = "UPDATE Usuarios SET Apellido = ?, Nombre = ?, FechaNacimiento = ?, Dni = ?, CorreoElectronico = ?, Contrasenia = ?,RolId = ? WHERE UsuarioId = ? AND Activo = 1;"
+    parametros = (apellido, nombre, Db.formato_fecha_db(fecha_nacimiento), dni, correo_electronico, Db.encriptar_contraseña(contrasenia), rol_Id, id)
+    Db.ejecutar(sql, parametros)       
 
 def eliminar(id, logical = True):    
     if logical:

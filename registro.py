@@ -27,7 +27,7 @@ class Registro(tk.Toplevel):
         GLabel_890["fg"] = "#333333"
         GLabel_890["justify"] = "center"
         GLabel_890["text"] = "Nombre:"
-        GLabel_890.place(x=60,y=20,width=70,height=25)
+        GLabel_890.place(x=60,y=60,width=70,height=25)
 
         GLabel_256=tk.Label(self)
         GLabel_256["cursor"] = "trek"
@@ -36,7 +36,7 @@ class Registro(tk.Toplevel):
         GLabel_256["fg"] = "#333333"
         GLabel_256["justify"] = "center"
         GLabel_256["text"] = "Apellido: "
-        GLabel_256.place(x=60,y=60,width=70,height=25)
+        GLabel_256.place(x=60,y=20,width=70,height=25)
 
         GLineEdit_540=tk.Entry(self, name="txtNombre")
         GLineEdit_540["bg"] = "#ffffff"
@@ -46,7 +46,7 @@ class Registro(tk.Toplevel):
         GLineEdit_540["fg"] = "#333333"
         GLineEdit_540["justify"] = "center"
         GLineEdit_540["text"] = ""
-        GLineEdit_540.place(x=130,y=20,width=250,height=25)
+        GLineEdit_540.place(x=130,y=60,width=250,height=25)
 
         GLineEdit_411=tk.Entry(self,name="txtApellido")
         GLineEdit_411["bg"] = "#ffffff"
@@ -56,7 +56,7 @@ class Registro(tk.Toplevel):
         GLineEdit_411["fg"] = "#333333"
         GLineEdit_411["justify"] = "center"
         GLineEdit_411["text"] = ""
-        GLineEdit_411.place(x=130,y=60,width=250,height=25)
+        GLineEdit_411.place(x=130,y=20,width=250,height=25)
 
         GButton_305=tk.Button(self)
         GButton_305["bg"] = "#f0f0f0"
@@ -234,11 +234,11 @@ class Registro(tk.Toplevel):
             confirmacion = self.get_value("txtConfirmarcontra")
             rol_id = self.get_index("cbRoles")
 
-            # TODO validar los datos antes de ingresar
+    
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
-                    user.agregar(nombre, apellido, fecha_nac, dni, email, usuario, contrasenia)#, rol_id) SIN ROL POR AHORA AGREGAR MAS TARDE
+                    user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id) 
                     tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
                     try:
                         self.master.refrescar()
@@ -249,7 +249,7 @@ class Registro(tk.Toplevel):
                     tkMsgBox.showwarning(self.master.title(), "Usuario existente")
             else:
                 print("Actualizacion de usuario")
-                user.actualizar(self.user_id, nombre, apellido, fecha_nac, dni, email, contrasenia) #,rol_id)  # SIN ROL POR AHORA TODO ver el tema de la contraseña
+                user.actualizar(self.user_id,apellido, nombre, fecha_nac, dni, email, contrasenia,rol_id) 
                 tkMsgBox.showinfo(self.master.title(), "Registro modificado!!!!!!")                
                 self.master.refrescar()
                 self.destroy()  

@@ -90,7 +90,7 @@ class Users(Toplevel):
         Registro(self, True, self.select_id)
 
     def eliminar(self):
-        answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este registro?")   
+        answer =  tkMsgBox.askokcancel(self.master.title(), "¿Está seguro de eliminar este registro?")   
         if answer:
             user.eliminar(self.select_id)
             self.refrescar()
