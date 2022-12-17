@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 import tkinter.font as tkFont
+from Menu_administracion.menueditadoprod import menu_editadoprod
 from Menu_administracion.menueditadodeus import menu_editadous
 from bll import usuarios
 from bll import roles
@@ -72,7 +73,7 @@ class MenuAdm(tk.Toplevel):
 
 
     def editarprod(self):
-        print("command")
+        menu_editadoprod(self.master)
 
 
     def facturas(self): #AGRERGAR COMANDOS

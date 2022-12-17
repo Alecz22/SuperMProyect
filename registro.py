@@ -254,8 +254,6 @@ class Registro(tk.Toplevel):
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
-                    roles = dict(rol.listar())
-                    cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
                     user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia,rol_id) 
                     tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
                     try:
