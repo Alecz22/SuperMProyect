@@ -6,6 +6,11 @@ def agregarp(nombrep,cantidadp,preciop,catprod):
     parametros = (nombrep,cantidadp,preciop,catprod)
     Db.ejecutar(sql, parametros)
 
+def agregarpp(nombrep,cantidadp,preciop):    
+    sql = "INSERT INTO Factura(PrecioUnitario,IdProducto,CantdeProd) VALUES(?, ?, ?);"
+    parametros = (nombrep,cantidadp,preciop)
+    Db.ejecutar(sql, parametros)
+
 def listarp():
     sql = '''SELECT e.IdProducto, e.NombreProducto, e.CantidadProducto, e.PrecioProducto, e.CategoriaProducto
      FROM Productos e;'''
@@ -35,7 +40,19 @@ def eliminarp(id, logical = True):
     parametros = (id,)
     Db.ejecutar(sql, parametros)
 
+def eliminarpp(id, logical = True):    
+    if logical:
+        sql = '''DELETE FROM Factura WHERE IdProducto = ? ;'''
+    parametros = (id,)
+    Db.ejecutar(sql, parametros)
+
 def actualizarp(id,nombrep,cantidadp,preciop,catprod):    
     sql = "UPDATE Productos SET NombreProducto = ?, CantidadProducto = ?, PrecioProducto = ?, CategoriaProducto = ? WHERE IdProducto = ?;"
     parametros = (nombrep,cantidadp,preciop,catprod,id)
     Db.ejecutar(sql, parametros)   
+
+def filtrarp(Producto):    
+    sql=""" SELECT * FROM Productos WHERE NombreProducto = ?"""
+    nombre=(Producto,)
+    result = Db.consultar(sql,Producto)
+    return result
